@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Management System</title>
+    <style>
+         *{
+            margin:0;
+            padding:0;
+            zoom: 100%;
+          color:white;
+        }
+        body{
+              background-color: rgb(46, 45, 45);
+        }
+        nav{
+            margin: 5px;
+            border-radius: 5px 5px;
+            padding: 15px;
+            background-color: rgb(25, 82, 123);
+                   /* border: 5px solid black; */
+            font-size:24px;
+           font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+           font-weight: bold;
+           color:white;
+        }
+        nav left{
+            width: 500px;
+                     /* border: 5px solid black; */
+        }
+
+        nav right ul{
+            margin-top:-3px ;
+            display: block  ;
+            float: right;
+            margin-right: 20px;
+            /* border: 5px solid black; */
+        }
+
+        nav right ul li{
+            display:inline;
+            padding-left: 20px;
+        }
+.container{
+    align-content: center;
+   padding: 2rem;
+}
+
+.container1 ul{
+
+    display: grid;
+    grid-template-columns: 12em 12em 14em 14em 12em 14em 14em 12em;
+    list-style: none;
+    padding-left:20px ;
+    cursor: pointer;
+}
+
+.container1 ul>li{
+    color:rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(107, 21, 123);
+    border: 1px solid rgb(231, 29, 170);
+    /* position:absolute; */
+    margin-left: 20px;
+    width:max-content;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+}
+
+.container2 {
+    padding: 20px;
+    margin-top: 2rem;
+}
+
+.container2 .output{
+    margin-top: 1rem;
+    background-color: black;
+    color: white;
+    height: 600px;
+    padding: 10px;
+    overflow:auto;
+
+}
+
+footer{
+    margin-top: 34px;
+    background: linear-gradient(15deg,rgb(102, 13, 134) 0%,rgba(188, 7, 94, 0.781) 100%);
+    padding: 10px;
+
+}
+    </style>
+    <script>
+        const pullImage = document.querySelector("#PullImage");
+let ListImage = document.querySelector("#ListImage");
+let imageHistory= document.querySelector("#ImageHistory");
+let removeImage= document.querySelector("#RemoveImage");
+let purneImage= document.querySelector("#PurneImage");
+let inspectImage= document.querySelector("#InspectImage");
+let listC= document.querySelector("#ListC");
+let createC= document.querySelector("#CreateC");
+function lw(value){
+    const to=value;
+    if(to==1){
+    var iName= prompt("imageName:");
+
+    var xhr = new XMLHttpRequest();
+xhr.onreadystatechange=function(){
+    if(this.readyState==4){
+        document.getElementById("showoutput").innerHTML=xhr.responseText;
+    }
+}
+xhr.open("GET", "http://13.234.75.243:3000/pullimg/?t="+iName , true);
+
+xhr.send();
+
+
+}
+if(to==2){
+
+    var xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange=function(){
+    if(this.readyState==4){
+        document.getElementById("showoutput").innerHTML=xhr.responseText;
+    }
+}
+xhr.open("GET", "http://13.234.75.243:3000/showimage" , true);
+
+xhr.send();
+
+
+}
+if(to==3){
+    var iName= prompt("Give Image name");
+
+    var xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange=function(){
+    if(this.readyState==4){
+        document.getElementById("showoutput").innerHTML=xhr.responseText;
+    }
+}
+xhr.open("GET", "http://13.234.75.243:3000/hisimg/?t="+iName, true);
+
+xhr.send();
+
+
+}
+if(to==4){
+    var iName= prompt("Give image name");
+
+    var xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange=function(){
+    if(this.readyState==4){
+        document.getElementById("showoutput").innerHTML=xhr.responseText;
+    }
+}
+xhr.open("GET", "http://13.234.75.243:3000/rmimg/?t="+iName , true);
+
+xhr.send();
+}
+if(to==5){
+
+    var xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange=function(){
+    if(this.readyState==4){
+        document.getElementById("showoutput").innerHTML=xhr.responseText;
+    }
+}
+xhr.open("GET", "http://13.234.75.243:3000/pruneimage" , true);
+
+xhr.send();
+
+
+}
+if(to==6){
+  var xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange=function(){
+    if(this.readyState==4){
+        document.getElementById("showoutput").innerHTML=xhr.responseText;
+    }
+}
+xhr.open("GET", "http://13.234.75.243:3000/listcontainer", true);
+
+xhr.send();
+
+
+}
+if(to==7){
+    var iName= prompt("imageName:");
+  var vName= prompt("Enter container name");
+  var xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange=function(){
+    if(this.readyState==4){
+        document.getElementById("showoutput").innerHTML=xhr.responseText;
+    }
+}
+xhr.open("GET", "http://13.234.75.243:3000/docontainer/?t="+iName+"&y="+vName, true);
+xhr.send();
+}
+
+}
+//       document.getElementById("d1").innerHTML = output;
+// }
+
+
+    </script>
+</head>
+<body>
+<header>
+<nav>
+<left>DOCKER Management System</left>
+<right> <ul>
+<li href="#">
+    DOCKER CLI
+</li>
+<li href="#">
+    DOCKER GUI
+</li>
+</ul> </right>
+</nav>
+
+</header>
+
+<main>
+
+<div class="container">
+
+<div class="container1">
+
+<ul>
+<!-- Images command -->
+<li onclick="lw(1)">PULL IMAGE </li></form>
+<li onclick="lw(2)">LIST IMAGE </li></form>
+<li onclick="lw(3)">IMAGE HISTORY</li></form>
+<li onclick="lw(4)">REMOVE IMAGE </li></form>
+<li onclick="lw(5)"> PURNE IMAGE</li></form>
+<li onclick="lw(6)">LIST CONTAINER </li></form>
+<li onclick="lw(7)">CREATE CONATINER  </li></form>
+
+</ul>
+
+
+
+</div>
+</form>
+<div class="container2">
+<h4>Output Terminal</h4>
+<div class="output" id="showoutput">
+output will be excuted..
+
+</div>
+</div>
+
+</div>
+
+
+</main>
+<footer>
+<center>
+    Developed BY Sushmita Kumari & Ayush Bajapi
+</center>
+
+</footer>
+
+</body>
+</html>
