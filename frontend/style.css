@@ -1,0 +1,87 @@
+ *{
+            margin:0;
+            padding:0;
+            zoom: 100%;
+          color:white;
+        }
+        body{
+              background-color: rgb(46, 45, 45);
+        }
+        nav{
+            margin: 5px;
+            border-radius: 5px 5px;
+            padding: 15px;
+            background-color: rgb(25, 82, 123);
+                   /* border: 5px solid black; */
+            font-size:24px;
+           font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+           font-weight: bold;
+           color:white;
+        }
+        nav left{
+            width: 500px;
+                     /* border: 5px solid black; */
+        }
+
+        nav right ul{
+            margin-top:-3px ;
+            display: block  ;
+            float: right;
+            margin-right: 20px;
+            /* border: 5px solid black; */
+        }
+
+        nav right ul li{
+            display:inline;
+            padding-left: 20px;
+        }
+.container{
+    align-content: center;
+   padding: 2rem;
+}
+      
+.container1 ul{
+    
+    display: grid;
+    grid-template-columns: 12em 12em 14em 14em 12em 14em 14em 12em;
+    list-style: none;
+    padding-left:20px ;
+    cursor: pointer;
+}
+
+.container1 ul>li{
+    color:rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(107, 21, 123);
+    border: 1px solid rgb(231, 29, 170);
+    /* position:absolute; */
+    margin-left: 20px;
+    width:max-content;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+}
+
+.container2 {
+    padding: 20px;
+    margin-top: 2rem;
+}
+
+.container2 .output{
+    margin-top: 1rem;
+    background-color: black;
+    color: white;
+    height: 600px;
+    padding: 10px;
+    overflow:auto;
+
+}
+
+footer{
+    margin-top: 34px;
+    background: linear-gradient(15deg,rgb(102, 13, 134) 0%,rgba(188, 7, 94, 0.781) 100%);
+    padding: 10px;
+
+}
