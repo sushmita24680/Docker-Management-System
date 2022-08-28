@@ -1,20 +1,19 @@
 const express=require('express')
 const {exec}=require('child_process')
-
-
 const app=express()
+const cors = require('cors');
+app.use(cors());
 app.get("/form",function(req,res){
-    const p=req.query.soc;
-  
-    res.send(p);
+    res.send("hi");
 })
 app.get("/",function(req,res){
-    res.sendFile(__dirname+"/index.html")
+    res.sendFile(__dirname+"/index1.html")
 })
 app.get("/docontainer",(req,res)=>
         {
-            
-exec('docker run -dit --name myos centos',(err,stdout,stderr)=>{
+const iname=req.query.t;
+                const cname=req.query.y;
+exec('docker run -dit --name '+" "+cname+" "+iname ,(err,stdout,stderr)=>{
         res.send(stdout);
 
 
@@ -39,15 +38,16 @@ exec('docker image ls -a',(err,stdout,stderr)=>{
     })
     app.get("/pruneimage",(req,res)=>
         {
-exec('docker image prune -a',(err,stdout,stderr)=>{
-        res.send(stdout);
+exec('docker image prune -a -y',(err,stdout,stderr)=>{
+        res.send("Successfully deleted");
 
 
         })
     });
     app.get("/pullimg",(req,res)=>
     {
-exec('docker image pull {image name}',(err,stdout,stderr)=>{
+            const iname=req.query.t;
+exec('docker image pull '+" "+iname,(err,stdout,stderr)=>{
     res.send(stdout);
 
 
@@ -55,7 +55,9 @@ exec('docker image pull {image name}',(err,stdout,stderr)=>{
 })
 app.get("/hisimg",(req,res)=>
 {
-exec('docker image history {image name}',(err,stdout,stderr)=>{
+{
+const iname=req.query.t;
+        exec('docker image history '+" "+iname,(err,stdout,stderr)=>{
 res.send(stdout);
 
 
@@ -63,7 +65,8 @@ res.send(stdout);
 })
 app.get("/rmimg",(req,res)=>
 {
-exec('docker image rm {image name}',(err,stdout,stderr)=>{
+        const iname=req.query.t;
+exec('docker image rm '+" "+iname,(err,stdout,stderr)=>{
 res.send(stdout);
 
 
@@ -77,5 +80,6 @@ res.send(stdout);
 
 })
 })
-    
+
 app.listen(3000,()=> console.log("server run"))
+
